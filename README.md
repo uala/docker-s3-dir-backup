@@ -21,7 +21,18 @@ BACKUP_TGT_DIR=/backup/
 BACKUP_SRC_DIR=/data/
 BACKUP_FILE_NAME='$(date +%Y-%m-%d)/$(date +%Y-%m-%d-%H-%M-%S)'
 ```
+## Usage
+Mount the dir you want to be backed up on `BACKUP_TGT_DIR` and run image as 
+daemon for periodic backup:
+```
+$ docker run -d -e BACKUP_S3_BUCKET=bucket/directory/ -e AWS_DEFAULT_REGION=aws-region -e AWS_ACCESS_KEY_ID=awsid -e AWS_SECRET_ACCESS_KEY=awskey -v /dir/on/host/:/backup/ mohamnag/s3-dir-backup
+```
 
+or for one time backup:
+```
+$ docker run --rm -e BACKUP_S3_BUCKET=bucket/directory/ -e AWS_DEFAULT_REGION=aws-region -e AWS_ACCESS_KEY_ID=awsid -e AWS_SECRET_ACCESS_KEY=aws
+key -v /dir/on/host/:/backup/ mohamnag/s3-dir-backup backup.sh
+```
 
 ## TODO
 Implement restore functionality. 
