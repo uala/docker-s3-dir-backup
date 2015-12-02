@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# save env variables
-#set | grep "BACKUP_" > /root/env
-#set | grep "AWS_" >> /root/env 
+# set necessary env variables as globals
 set | grep "BACKUP_" > /etc/environment
 set | grep "AWS_" >> /etc/environment
 

@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# restore env variables
-eval $(cat /root/env)
-
 echo "creating archive..."
 
 eval "export BACKUP_DST_FULL_PATH=${BACKUP_TGT_DIR}${BACKUP_FILE_NAME}.tar.gz"
