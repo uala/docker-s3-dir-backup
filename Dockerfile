@@ -1,10 +1,19 @@
 FROM mohamnag/aws-cli
 
 # change these to fit your need
-ENV BACKUP_DIR=/backup/
-ENV DATA_DIR=/data/
+
 # m h  dom mon dow
-ENV CRON_SCHEDULE="* * * * *"
+ENV BACKUP_CRON_SCHEDULE="* * * * *"
+
+ENV BACKUP_TGT_DIR=/backup/
+ENV BACKUP_SRC_DIR=/data/
+ENV BACKUP_FILE_NAME='$(date +%Y-%m-%d)/$(date +%Y-%m-%d-%H-%M-%S)'
+
+# bucket/path/to/place/
+ENV BACKUP_S3_BUCKET=
+ENV AWS_DEFAULT_REGION=
+ENV AWS_ACCESS_KEY_ID=
+ENV AWS_SECRET_ACCESS_KEY=
 
 ADD crontab /etc/cron.d/backup-cron
 ADD backup.sh /opt/backup.sh
@@ -16,9 +25,9 @@ RUN chmod 0644 /etc/cron.d/backup-cron
 RUN touch /var/log/cron.log
 RUN chmod +x /opt/*.sh
 
-VOLUME $BACKUP_DIR
-VOLUME $DATA_DIR
+VOLUME $BACKUP_TGT_DIR
+VOLUME $BACKUP_SRC_DIR
 
 WORKDIR /opt/
 
-CMD cron.sh
+CMD /opt/cron.sh
