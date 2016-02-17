@@ -28,10 +28,9 @@ daemon for periodic backup:
 $ docker run -d -e BACKUP_S3_BUCKET=bucket/directory/ -e AWS_DEFAULT_REGION=aws-region -e AWS_ACCESS_KEY_ID=awsid -e AWS_SECRET_ACCESS_KEY=awskey -v /dir/on/host/:/backup/ mohamnag/s3-dir-backup
 ```
 
-or for one time backup:
+or for one time backup (using default values and not keeping the backup archive):
 ```
-$ docker run --rm -e BACKUP_S3_BUCKET=bucket/directory/ -e AWS_DEFAULT_REGION=aws-region -e AWS_ACCESS_KEY_ID=awsid -e AWS_SECRET_ACCESS_KEY=aws
-key -v /dir/on/host/:/backup/ mohamnag/s3-dir-backup backup.sh
+$ docker run --rm -e BACKUP_S3_BUCKET=bucket/directory/ -e AWS_DEFAULT_REGION=aws-region -e AWS_ACCESS_KEY_ID=awsid -e AWS_SECRET_ACCESS_KEY=awskey -v /dir/on/host/:/data/ mohamnag/s3-dir-backup /opt/backup.sh
 ```
 
 ## TODO
