@@ -24,7 +24,11 @@ BCK_FILE=${BACKUP_TGT_DIR}`echo ${LAST_OBJ} | sed -e 's/\(.*\/\)*//g'`
 
 tar -xzvf ${BCK_FILE} -C ${BACKUP_SRC_DIR}
 
+rm ${BCK_FILE}
+
 if [ -z "$RESTORE_RESUME_BACKUP" ]; then
+	echo "restore finished, exiting"
+else
 	echo "continuing with backup corn job..."
 	/opt/cron.sh
 fi
