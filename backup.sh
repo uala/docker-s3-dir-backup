@@ -2,7 +2,9 @@
 
 echo "creating archive..."
 
-BACKUP_DST_FULL_PATH=${BACKUP_TGT_DIR}${BACKUP_FILE_NAME}.tar.gz
+# this has to be executed like this, because we have two level expansion in variables
+eval "export BACKUP_DST_FULL_PATH=${BACKUP_TGT_DIR}${BACKUP_FILE_NAME}.tar.gz"
+
 BACKUP_DST_DIR=$(dirname "${BACKUP_DST_FULL_PATH}")
 
 mkdir -p ${BACKUP_DST_DIR}
