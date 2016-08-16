@@ -22,10 +22,10 @@ RESTORE_FILE_PATH=
 
 Flowing environment variables can be set to change the functionality:
 ```
-BACKUP_CRON_SCHEDULE="* * * * *"
+BACKUP_CRON_SCHEDULE=* * * * *
 BACKUP_TGT_DIR=/backup/		// always with trailing slash at the end!
 BACKUP_SRC_DIR=/data/		// always with trailing slash at the end!
-BACKUP_FILE_NAME='host_volumes'
+BACKUP_FILE_NAME=host_volumes
 ```
 ## Usage
 ### Backup
