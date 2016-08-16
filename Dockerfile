@@ -7,7 +7,7 @@ ENV BACKUP_CRON_SCHEDULE="* * * * *"
 
 ENV BACKUP_TGT_DIR=/backup/
 ENV BACKUP_SRC_DIR=/data/
-ENV BACKUP_FILE_NAME='$(date +%Y-%m-%d)/$(date +%Y-%m-%d-%H-%M-%S)'
+ENV BACKUP_FILE_NAME='host_volumes'
 
 # bucket/path/to/place/
 ENV BACKUP_S3_BUCKET=
