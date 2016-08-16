@@ -12,6 +12,7 @@ eval "export COMPARE_DST_FULL_PATH=${COMPARE_DIR}${BACKUP_FILE_NAME}.tar.gz"
 
 BACKUP_DST_DIR=$(dirname "${BACKUP_DST_FULL_PATH}")
 
+mkdir -p ${COMPARE_DIR}
 echo "Gzipping ${BACKUP_SRC_DIR} into ${COMPARE_DST_FULL_PATH}" 
 tar -czf ${COMPARE_DST_FULL_PATH} -C ${BACKUP_SRC_DIR} .
 
