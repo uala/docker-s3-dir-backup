@@ -1,5 +1,6 @@
 # Directory backup to S3
-Backups a directory to S3 after gzipping it.
+Backups a directory to S3 after gzipping it and checking if it's different from the last one.
+This avoids to upload multiple backups that are all equals.
 
 Image runs as a cron job by default evey minute. Period may be changed by tuning `BACKUP_CRON_SCHEDULE` environment variable.
 
@@ -24,13 +25,13 @@ Flowing environment variables can be set to change the functionality:
 BACKUP_CRON_SCHEDULE="* * * * *"
 BACKUP_TGT_DIR=/backup/		// always with trailing slash at the end!
 BACKUP_SRC_DIR=/data/		// always with trailing slash at the end!
-BACKUP_FILE_NAME='$(date +%Y-%m-%d)/$(date +%Y-%m-%d-%H-%M-%S)'
+BACKUP_FILE_NAME='host_volumes'
 ```
 ## Usage
 ### Backup
 If you want to keep the archive files created, mount a volume on `BACKUP_TGT_DIR`.
 
-If you want to store files on S3 under a subdirectory, just add it to the `BACKUP_S3_BUCKET` like `BACKUP_S3_BUCKET=bucket_name/subdirectory_for_storage`. You can also add it to `BACKUP_FILE_NAME` but if you want to use the auto restore feature, it will be more efficient to add it to `BACKUP_S3_BUCKET`. However `BACKUP_FILE_NAME` can have dynamic parts like date and time inside.
+If you want to store files on S3 under a subdirectory, just add it to the `BACKUP_S3_BUCKET` like `BACKUP_S3_BUCKET=bucket_name/subdirectory_for_storage`.
 
 #### Examples
 
