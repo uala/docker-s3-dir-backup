@@ -2,6 +2,7 @@ FROM mohamnag/aws-cli
 MAINTAINER Luca Mattivi <luca@smartdomotik.com>
 
 # change these to fit your need
+RUN apt-get update -q && apt-get install cron --yes
 
 # m h  dom mon dow
 ENV BACKUP_CRON_SCHEDULE="* * * * *"
