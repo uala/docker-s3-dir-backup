@@ -14,7 +14,7 @@ BACKUP_DST_DIR=$(dirname "${BACKUP_DST_FULL_PATH}")
 
 mkdir -p ${COMPARE_DIR}
 echo "Gzipping ${BACKUP_SRC_DIR} into ${COMPARE_DST_FULL_PATH}" 
-tar -czf ${COMPARE_DST_FULL_PATH} -C ${BACKUP_SRC_DIR} .
+tar -czf ${COMPARE_DST_FULL_PATH} --exclude-tag-all=exclude_dir_from_backup -C ${BACKUP_SRC_DIR} .
 
 if cmp -s -i 8 "$BACKUP_DST_FULL_PATH" "$COMPARE_DST_FULL_PATH"
 then

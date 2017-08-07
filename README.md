@@ -2,6 +2,8 @@
 Backups a directory to S3 after gzipping it and checking if it's different from the last one.
 This avoids to upload multiple backups that are all equals.
 
+You can also exclude one or more directories from the backup just adding an empty file `exclude_dir_from_backup` inside every directory.
+
 Image runs as a cron job by default evey minute. Period may be changed by tuning `BACKUP_CRON_SCHEDULE` environment variable.
 
 May also be run as a one time backup job by using `backup.sh` script as command.
@@ -32,6 +34,7 @@ BACKUP_FILE_NAME=host_volumes
 If you want to keep the archive files created, mount a volume on `BACKUP_TGT_DIR`.
 
 If you want to store files on S3 under a subdirectory, just add it to the `BACKUP_S3_BUCKET` like `BACKUP_S3_BUCKET=bucket_name/subdirectory_for_storage`.
+
 
 #### Examples
 
