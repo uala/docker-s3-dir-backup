@@ -1,4 +1,4 @@
-FROM mohamnag/aws-cli
+FROM docker.twtools.io/docker_io/mohamnag/aws-cli
 MAINTAINER Luca Mattivi <luca@smartdomotik.com>
 
 # change these to fit your need
